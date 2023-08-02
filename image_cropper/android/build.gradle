@@ -38,6 +38,7 @@ android {
         disable 'InvalidPackage'
     }
     dependencies {
-        implementation 'com.github.yalantis:ucrop:2.2.8'
+        // implementation 'com.github.yalantis:ucrop:2.2.8'
+        implementation 'com.github.sonysm:uCrop-gnk:gnk-ui'
     }
 }

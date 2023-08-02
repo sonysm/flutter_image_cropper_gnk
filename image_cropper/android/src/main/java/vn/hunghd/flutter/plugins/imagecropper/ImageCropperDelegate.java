@@ -171,6 +171,8 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
         Boolean showCropGrid = call.argument("android.show_crop_grid");
         Boolean lockAspectRatio = call.argument("android.lock_aspect_ratio");
         Boolean hideBottomControls = call.argument("android.hide_bottom_controls");
+        /// sony // auto hide default control
+        hideBottomControls = true;
 
         if (title != null) {
             options.setToolbarTitle(title);
