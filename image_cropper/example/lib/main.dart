@@ -262,6 +262,7 @@ class _HomePageState extends State<HomePage> {
         sourcePath: _pickedFile!.path,
         compressFormat: ImageCompressFormat.jpg,
         compressQuality: 100,
+        countTitle: '1/5',
         uiSettings: [
           AndroidUiSettings(
               toolbarTitle: 'Cropper',

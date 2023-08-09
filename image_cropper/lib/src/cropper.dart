@@ -79,6 +79,7 @@ class ImageCropper {
     CropStyle cropStyle = CropStyle.rectangle,
     ImageCompressFormat compressFormat = ImageCompressFormat.jpg,
     int compressQuality = 90,
+    String countTitle = '',
     List<PlatformUiSettings>? uiSettings,
   }) {
     return platform.cropImage(
@@ -90,6 +91,7 @@ class ImageCropper {
       cropStyle: cropStyle,
       compressFormat: compressFormat,
       compressQuality: compressQuality,
+      countTitle: countTitle,
       uiSettings: uiSettings,
     );
   }
@@ -137,6 +139,6 @@ class ImageCropper {
   /// * [Android Activity Lifecycle](https://developer.android.com/reference/android/app/Activity.html)
   ///
   Future<CroppedFile?> recoverImage() {
-    return platform.recoverImage();    
+    return platform.recoverImage();
   }
 }
