@@ -67,6 +67,7 @@ class MethodChannelImageCropper extends ImageCropperPlatform {
     CropStyle cropStyle = CropStyle.rectangle,
     ImageCompressFormat compressFormat = ImageCompressFormat.jpg,
     int compressQuality = 90,
+    String countTitle = "",
     List<PlatformUiSettings>? uiSettings,
   }) async {
     assert(await File(sourcePath).exists());
@@ -85,6 +86,7 @@ class MethodChannelImageCropper extends ImageCropperPlatform {
       'crop_style': cropStyleName(cropStyle),
       'compress_format': compressFormatName(compressFormat),
       'compress_quality': compressQuality,
+      "count_title": countTitle,
     };
 
     if (uiSettings != null) {

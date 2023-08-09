@@ -85,6 +85,7 @@ abstract class ImageCropperPlatform extends PlatformInterface {
     CropStyle cropStyle = CropStyle.rectangle,
     ImageCompressFormat compressFormat = ImageCompressFormat.jpg,
     int compressQuality = 90,
+    String countTitle = "",
     List<PlatformUiSettings>? uiSettings,
   }) {
     throw UnimplementedError('cropImage() has not been implemented.');
