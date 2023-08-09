@@ -67,7 +67,7 @@
       }
       
       // sony
-//      cropViewController.countTitle = countTitle;
+     cropViewController.countTitle = countTitle;
 
 
       NSMutableArray *allowedAspectRatios = [NSMutableArray new];
