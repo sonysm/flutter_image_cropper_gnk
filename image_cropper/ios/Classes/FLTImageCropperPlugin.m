@@ -65,6 +65,10 @@
           _compressFormat = @"jpg";
       }
       
+      // sony
+      cropViewController.countTitle = countTitle;
+
+
       NSMutableArray *allowedAspectRatios = [NSMutableArray new];
       for (NSString *preset in aspectRatioPresets) {
           if (preset) {
@@ -122,6 +126,8 @@
     NSString *title = options[@"ios.title"];
     NSString *doneButtonTitle = options[@"ios.done_button_title"];
     NSString *cancelButtonTitle = options[@"ios.cancel_button_title"];
+    NSString *countTitle = options[@"count_title"];
+
     
     if (minimumAspectRatio && [minimumAspectRatio isKindOfClass:[NSNumber class]]) {
         controller.minimumAspectRatio = minimumAspectRatio.floatValue;
