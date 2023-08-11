@@ -79,7 +79,7 @@
       cropViewController.allowedAspectRatios = allowedAspectRatios;
       
       // sony
-      cropViewController.aspectRatioPreset = allowedAspectRatios.firstObject;
+      cropViewController.aspectRatioPreset = [self parseAspectRatioPresetFromName:aspectRatioPresets.firstObject];
       //
       
       if (ratioX != (id)[NSNull null] && ratioY != (id)[NSNull null]) {
