@@ -260,17 +260,18 @@ class _HomePageState extends State<HomePage> {
     if (_pickedFile != null) {
       final croppedFile = await ImageCropper().cropImage(
         sourcePath: _pickedFile!.path,
-        compressFormat: ImageCompressFormat.jpg,
+        compressFormat: ImageCompressFormat.png,
         compressQuality: 100,
         aspectRatioPresets: [CropAspectRatioPreset.ratio16x9],
         countTitle: '1/5',
         uiSettings: [
           AndroidUiSettings(
-              toolbarTitle: 'Cropper',
-              toolbarColor: Colors.deepOrange,
-              toolbarWidgetColor: Colors.white,
-              initAspectRatio: CropAspectRatioPreset.original,
-              lockAspectRatio: false),
+            toolbarTitle: 'Cropper',
+            toolbarColor: Colors.deepOrange,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.ratio16x9,
+            lockAspectRatio: true,
+          ),
           IOSUiSettings(
             title: 'Cropper',
           ),
