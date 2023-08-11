@@ -78,6 +78,10 @@
       }
       cropViewController.allowedAspectRatios = allowedAspectRatios;
       
+      // sony
+      cropViewController.aspectRatioPreset = allowedAspectRatios.firstObject;
+      //
+      
       if (ratioX != (id)[NSNull null] && ratioY != (id)[NSNull null]) {
           cropViewController.customAspectRatio = CGSizeMake([ratioX floatValue], [ratioY floatValue]);
           cropViewController.resetAspectRatioEnabled = NO;

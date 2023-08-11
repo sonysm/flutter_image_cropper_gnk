@@ -43,6 +43,9 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
         Double ratioX = call.argument("ratio_x");
         Double ratioY = call.argument("ratio_y");
         String cropStyle = call.argument("crop_style");
+        // sony
+        String countTitle = call.argument("crop_style");
+        //
         String compressFormat = call.argument("compress_format");
         Integer compressQuality = call.argument("compress_quality");
         ArrayList<String> aspectRatioPresets = call.argument("aspect_ratio_presets");
@@ -64,6 +67,9 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
         options.setCompressionFormat("png".equals(compressFormat) ? Bitmap.CompressFormat.PNG : Bitmap.CompressFormat.JPEG);
         options.setCompressionQuality(compressQuality != null ? compressQuality : 90);
 
+        // sony
+//        options.setCountTitle(countTitle);
+        //
         // UI customization settings
         if ("circle".equals(cropStyle)) {
             options.setCircleDimmedLayer(true);
