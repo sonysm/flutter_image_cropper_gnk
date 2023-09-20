@@ -44,7 +44,7 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
         Double ratioY = call.argument("ratio_y");
         String cropStyle = call.argument("crop_style");
         // sony
-        String countTitle = call.argument("crop_style");
+        String countTitle = call.argument("count_title");
         //
         String compressFormat = call.argument("compress_format");
         Integer compressQuality = call.argument("compress_quality");
@@ -53,22 +53,23 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
 
         pendingResult = result;
 
-    File outputDir = activity.getCacheDir();
-    File outputFile;
-	if("png".equals(compressFormat)){
-        outputFile = new File(outputDir, "image_cropper_" + (new Date()).getTime() + ".png");
-	} else {
-		outputFile = new File(outputDir, "image_cropper_" + (new Date()).getTime() + ".jpg");
-	}
+        File outputDir = activity.getCacheDir();
+        File outputFile;
+        if ("png".equals(compressFormat)) {
+            outputFile = new File(outputDir, "image_cropper_" + (new Date()).getTime() + ".png");
+        } else {
+            outputFile = new File(outputDir, "image_cropper_" + (new Date()).getTime() + ".jpg");
+        }
         Uri sourceUri = Uri.fromFile(new File(sourcePath));
         Uri destinationUri = Uri.fromFile(outputFile);
 
         UCrop.Options options = new UCrop.Options();
-        options.setCompressionFormat("png".equals(compressFormat) ? Bitmap.CompressFormat.PNG : Bitmap.CompressFormat.JPEG);
+        options.setCompressionFormat(
+                "png".equals(compressFormat) ? Bitmap.CompressFormat.PNG : Bitmap.CompressFormat.JPEG);
         options.setCompressionQuality(compressQuality != null ? compressQuality : 90);
 
         // sony
-//        options.setCountTitle(countTitle);
+        options.setCountTitle(countTitle);
         //
         // UI customization settings
         if ("circle".equals(cropStyle)) {
@@ -89,7 +90,7 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
                     }
                 }
             }
-            options.setAspectRatioOptions(defaultIndex, aspectRatioList.toArray(new AspectRatio[]{}));
+            options.setAspectRatioOptions(defaultIndex, aspectRatioList.toArray(new AspectRatio[] {}));
         }
 
         UCrop cropper = UCrop.of(sourceUri, destinationUri).withOptions(options);
@@ -233,7 +234,6 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
 
         return options;
     }
-
 
     private void clearMethodCallAndResult() {
         pendingResult = null;
