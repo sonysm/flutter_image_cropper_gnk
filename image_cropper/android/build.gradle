@@ -39,6 +39,6 @@ android {
     }
     dependencies {
         // implementation 'com.github.yalantis:ucrop:2.2.8'
-        implementation 'com.github.sonysm:uCrop-gnk:1.0.3'
+        implementation 'com.github.sonysm:uCrop-gnk:1.0.5'
     }
 }
