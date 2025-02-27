@@ -9,7 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.1.0
+  image_cropper_platform_interface:
+    git: 
+      url: https://github.com/sonysm/flutter_image_cropper_gnk.git
+      path: image_cropper_platform_interface
   http: ^1.0.0
 
 dev_dependencies:
