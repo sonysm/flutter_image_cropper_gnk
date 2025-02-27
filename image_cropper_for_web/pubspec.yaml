@@ -13,7 +13,10 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
 
-  image_cropper_platform_interface: ^7.0.0
+  image_cropper_platform_interface:
+    git: 
+      url: https://github.com/sonysm/flutter_image_cropper_gnk.git
+      path: image_cropper_platform_interface
 
   web: ">=0.5.0 <2.0.0"
 
