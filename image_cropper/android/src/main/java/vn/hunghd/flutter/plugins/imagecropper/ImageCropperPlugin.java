@@ -3,8 +3,6 @@ package vn.hunghd.flutter.plugins.imagecropper;
 
 import android.app.Activity;
 
-import androidx.appcompat.app.AppCompatDelegate;
-
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
@@ -19,28 +17,10 @@ import io.flutter.plugin.common.PluginRegistry;
  * ImageCropperPlugin
  */
 public class ImageCropperPlugin implements MethodCallHandler, FlutterPlugin, ActivityAware {
-    static {
-        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-    }
-
     private static final String CHANNEL = "plugins.hunghd.vn/image_cropper";
     private ImageCropperDelegate delegate;
 
     private ActivityPluginBinding activityPluginBinding;
-
-
-    /**
-     * Plugin registration.
-     */
-    public static void registerWith(PluginRegistry.Registrar registrar) {
-
-        ImageCropperPlugin plugin = new ImageCropperPlugin();
-
-        plugin.setupEngine(registrar.messenger());
-        ImageCropperDelegate delegate = plugin.setupActivity(registrar.activity());
-        registrar.addActivityResultListener(delegate);
-
-    }
 
     private void setupEngine(BinaryMessenger messenger) {
         MethodChannel channel = new MethodChannel(messenger, CHANNEL);

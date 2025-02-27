@@ -1,3 +1,195 @@
+## 9.0.0
+
+* iOS: add support for Swift Package Manager (PR [#555](https://github.com/hnvn/flutter_image_cropper/pull/555))
+* Android: refactored edge-to-edge workaround solution by removing related code from the plugin and integrating it directly into the app.
+
+***Migration guide***
+  - Add follwowing code to file `android/app/src/main/res/values/styles.xml`
+  ```xml
+  <resources>
+    ....
+    <style name="Ucrop.CropTheme" parent="Theme.AppCompat.Light.NoActionBar"/> <!--add this line-->
+  </resources>
+  ```
+  - Create new file `android/app/src/main/res/values-v35/styles.xml` and add the following code to it:
+  ```xml
+  <?xml version="1.0" encoding="utf-8"?>
+  <resources>
+    <style name="Ucrop.CropTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
+    </style>
+  </resources>
+  ```
+  - Modify the decleration of `UCropActivity` in your `AndroidManifest.xml` (if you have not modified it yet)
+  ```xml
+  <activity
+    android:name="com.yalantis.ucrop.UCropActivity"
+    android:screenOrientation="portrait"
+    android:theme="@style/Ucrop.CropTheme"/> <!--this line is updated-->
+  ```
+
+## 8.1.0
+
+* Android: workaround edge-to-adge issue on Android 15
+
+  ***Before***:
+  ```xml
+    <activity
+      android:name="com.yalantis.ucrop.UCropActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+  ```
+
+  ***After***:
+  ```xml
+    <activity
+      android:name="com.yalantis.ucrop.UCropActivity"
+      android:screenOrientation="portrait"
+      android:theme="@style/Ucrop.CropTheme"/> <!-- This line is updated -->
+  ```
+
+## 8.0.2
+
+* Android: fix deprecated API
+* web: correct constraints of flutter version (>=3.22.0)
+
+## 8.0.1
+
+* use `>=0.5.0 < 2.0.0` version range for package:web
+
+## 8.0.0
+
+* upgrade `web` dependency  
+* relax flutter version constraints
+* iOS: Prefer presented view controller if preset to Root view controller
+* iOS: introduce `iOSUiSettings.embedInNavigationController` to support add2app environments
+
+## 7.1.0
+
+* upgrade `platform_interface` dependency
+* increase Dart SDK constraints (`>=3.3.0`)
+* Android: Removes references to Flutter v1 android embedding classes.
+
+## 7.0.5
+
+* Web: support config type of output image (jpg or png)
+
+## 7.0.4
+
+* Web: update dependencies
+
+## 7.0.3
+
+* Web: improve cropper UI
+
+## 7.0.2
+
+* Web:
+  - fix bug cropper not get correct container's size
+  - improve cropper UI
+* correct document
+
+
+## 7.0.1
+
+* correct document
+
+## 7.0.0
+
+* refactor plugin to use new JS library, `cropperjs` instead of `croppie`
+* support Wasm
+* support customize `CropAspectRatioPreset`
+* **BREAKING CHANGES**:
+
+    - **WebUiSettings**: is totally re-implemented, please see plugin document for more details
+    - **cropImage()**: move `cropStyle` and `aspectRatioPresets` into `AndroidUiSettings` and `IOUiSettings` for sake of clean and clarity.
+
+    **Migration guides**:
+
+    ***Before***:
+    ```
+    File croppedFile = await ImageCropper().cropImage(
+      sourcePath: imageFile.path,
+      cropStyle: CropStyle.circle,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+        CropAspectRatioPreset.original,
+      ],
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: 'Cropper',
+        ),
+        IOSUiSettings(
+          title: 'Cropper',
+        ),
+      ],
+    );
+    ```
+
+    ***After***:
+    ```
+    File croppedFile = await ImageCropper().cropImage(
+      sourcePath: imageFile.path,
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: 'Cropper',
+          cropStyle: CropStyle.circle,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.original,
+          ],
+        ),
+        IOSUiSettings(
+          title: 'Cropper',
+          cropStyle: CropStyle.circle,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.original,
+          ],
+        ),
+      ],
+    );
+    ```
+
+    **Web integration**:
+
+    ***Before***:
+    ```
+    <head>
+        ....
+
+        <!-- Croppie -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.css" />
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/exif-js/2.3.0/exif.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+
+        ....
+    </head>
+    ```
+
+    ***After***:
+    ```
+    <head>
+        ....
+
+        <!-- cropperjs -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+        ....
+    </head>
+    ```
+
+## 6.0.0
+
+* Android: upgrade `uCrop` to v2.2.9
+* iOS: upgrade `TOCropViewController` to v2.7.3
+* web: upgrade `js` to v0.7.1
+
+## 5.0.1
+
+* Android: improve compression quality
+
 ## 5.0.0
 
 * upgrade `http` to v1.0.0
