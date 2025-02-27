@@ -43,7 +43,7 @@ public class ImageCropperDelegate implements PluginRegistry.ActivityResultListen
         Integer maxHeight = call.argument("max_height");
         Double ratioX = call.argument("ratio_x");
         Double ratioY = call.argument("ratio_y");
-        String cropStyle = call.argument("crop_style");
+        //String cropStyle = call.argument("crop_style");
         // sony
         String countTitle = call.argument("count_title");
         //
