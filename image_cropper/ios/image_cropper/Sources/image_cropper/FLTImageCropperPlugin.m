@@ -155,10 +155,7 @@
     NSString *doneButtonTitle = options[@"ios.done_button_title"];
     NSString *cancelButtonTitle = options[@"ios.cancel_button_title"];
 
-<<<<<<< HEAD:image_cropper/ios/Classes/FLTImageCropperPlugin.m
     
-=======
->>>>>>> upstream/master:image_cropper/ios/image_cropper/Sources/image_cropper/FLTImageCropperPlugin.m
     if (minimumAspectRatio && [minimumAspectRatio isKindOfClass:[NSNumber class]]) {
         controller.minimumAspectRatio = minimumAspectRatio.floatValue;
     }
